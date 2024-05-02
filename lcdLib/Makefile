@@ -1,4 +1,4 @@
-all: libLcd.a lcddemo.elf
+all: libLcd.a lcddemo.elf lcddemo-s.elf
 
 CPU             = msp430g2553
 CFLAGS          = -mmcu=${CPU} -Os -I../h 
@@ -29,5 +29,12 @@ clean:
 lcddemo.elf: lcddemo.o buzzer.o redControl-c.o blink.o libLcd.a  
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
 
+lcddemo-s.elf: lcddemo.o buzzer.o redControl-s.o blink.o libLcd.a
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 	
+
 load: lcddemo.elf
 	msp430loader.sh $^
+
+load-s: lcddemo-s.elf
+	msp430loader.sh $^
+
