@@ -14,7 +14,8 @@ libLcd.a: font-11x16.o font-5x7.o font-8x12.o lcdutils.o lcddraw.o
 lcddraw.o: lcddraw.c lcddraw.h lcdutils.h
 lcdutils.o: lcdutils.c lcdutils.h
 buzzer.c: buzzer.h
-recControl-c.o: led.h
+redControl-c.o: led.h
+drawFilledTriangle-c.o: led.h
 wdInterruptHandler.o: led.h
 blink.o: led.h
 
@@ -24,15 +25,15 @@ install: libLcd.a
 	cp *.h ../h
 
 clean:
-	rm -f libLcd.a *.o *.elf *.c# *.c~ *~
+	rm -f libLcd.a *.o *.elf *.c# *.c~ *~ *#
 
-lcddemo.elf: lcddemo.o buzzer.o redControl-c.o blink.o libLcd.a  
+lcddemo-c.elf: lcddemo.o buzzer.o redControl-c.o drawFilledTriangle-c.o blink.o libLcd.a  
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
 
-lcddemo-s.elf: lcddemo.o buzzer.o redControl-s.o blink.o libLcd.a
+lcddemo-s.elf: lcddemo.o buzzer.o redControl-s.o drawFilledTriangle-s.o blink.o libLcd.a
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 	
 
-load: lcddemo.elf
+load-c: lcddemo-c.elf
 	msp430loader.sh $^
 
 load-s: lcddemo-s.elf

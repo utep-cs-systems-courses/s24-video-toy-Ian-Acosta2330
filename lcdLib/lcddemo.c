@@ -51,16 +51,19 @@ static void drawTriangle(u_char acol, u_char arow, u_char size, u_int color) {
     
 }
 
-static void drawFilledTriangle(u_char acol, u_char arow, u_int color) {
+/*
+void drawFilledTriangle(u_char acol, u_char arow, u_int color, u_char size) {
   int i;
   int j;
-  
-  for(i = 0; i <= 60; i++) {
+    
+  for(i = 0; i <= size; i++) {
     for(j = acol-i; j < acol+i; j++) {
       drawPixel(j,i+arow,color);
     }
-  }
+    }
 }
+
+ */
 
 volatile u_char width = screenWidth>>1, height = screenHeight>>1;
 
@@ -143,7 +146,7 @@ void switch_interrupt_handler_P1() {
     green_on = 1;
     clearScreen(COLOR_BLACK);
     drawTriangle(width, height, 15, COLOR_RED);
-
+    
     //redControl(0);
     //P1OUT |= LED_GREEN;
     //buzzer_set_period(800);
@@ -190,9 +193,10 @@ void switch_interrupt_handler_P2_3() {
  } else {
     //P1OUT |= LED_GREEN;
     //buzzer_set_period(3300);
-    green_on = 1;
+   char size = 60;
+   green_on = 1;
     clearScreen(COLOR_RED);
-    drawFilledTriangle(width, height, COLOR_BLACK);
+    drawFilledTriangle(width, height, COLOR_BLACK,size);
 
   }
 }

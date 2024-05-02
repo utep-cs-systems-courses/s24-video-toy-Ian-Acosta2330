@@ -6,6 +6,7 @@
 //#define LEDS (BIT6 | BIT0)
 
 int redControl(int on);
+void drawFilledTriangle();
 int blink();
 void song();
 void play(int dur);
