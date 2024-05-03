@@ -7,7 +7,7 @@
 	.global drawFilledTriangle
 	.extern drawPixel
 drawFilledTriangle:
-	sub #5, r1
+	sub #7, r1
 	mov #0, 0(r1)
 	jmp OutLoop
 	
@@ -17,20 +17,20 @@ OutLoop:
 	jmp InLoop
 	
 InLoop:
-	mov r12, 2(r1)
-	sub 0(r1), 2(r1)
-	mov 2(r1), 1(r1)
-	mov r12, 3(r1)
-	add 0(r1), 3(r1)
-	cmp 3(r1), 1(r1)
+	mov r12, 5(r1)
+	sub 0(r1), 5(r1)
+	mov 5(r1), 2(r1)
+	mov r12, 6(r1)
+	add 0(r1), 6(r1)
+	cmp 6(r1), 2(r1)
 	jc interm
 	;; 
-	mov r13, 4(r1)
-	add 0(r1), 4(r1)
-	mov 1(r1), r12
-	mov 4(r1), r13
+	mov r13, 7(r1)
+	add 0(r1), 7(r1)
+	mov 2(r1), r12
+	mov 7(r1), r13
 	call #drawPixel
-	add #1, 1(r1)
+	add #1, 2(r1)
 	jmp InLoop
 
 interm:
@@ -38,6 +38,6 @@ interm:
 	jmp OutLoop
 
 end:
-	add #5, r1
+	add #7, r1
 	pop r0
 	

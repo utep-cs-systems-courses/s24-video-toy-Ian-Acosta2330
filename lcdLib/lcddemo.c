@@ -30,14 +30,15 @@ volatile int red_on = 0;
 volatile int green_on = 0;
 volatile int redDim = 0;
 
+/*
 static void drawTriangle(u_char acol, u_char arow, u_char size, u_int color) {
   int i;
-  /*
+  
   for(i = arow-size; i < size+arow; i++) {
     for(j = acol-size; j < size+acol; j++) {
       drawPixel(j, i, color);
     } 
-  }   */
+  }   
 
   for(i = arow-size;i < size+arow;i++) {
     drawPixel(i,i,color);
@@ -50,6 +51,7 @@ static void drawTriangle(u_char acol, u_char arow, u_char size, u_int color) {
   }
     
 }
+ */
 
 /*
 void drawFilledTriangle(u_char acol, u_char arow, u_int color, u_char size) {

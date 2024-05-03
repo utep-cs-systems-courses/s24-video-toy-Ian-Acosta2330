@@ -7,6 +7,7 @@
 
 int redControl(int on);
 void drawFilledTriangle();
+void drawTriangle();
 int blink();
 void song();
 void play(int dur);

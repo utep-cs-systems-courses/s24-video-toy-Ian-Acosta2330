@@ -11,7 +11,16 @@ void drawFilledTriangle(u_char acol, u_char arow, u_int color, u_char size) {
     
   for(i = 0; i <= size; i++) {
     for(j = acol-i; j < acol+i; j++) {
-      drawPixel(j,i+arow,color);
+      drawPixel(j,i+arow, COLOR_YELLOW);
+      drawPixel(j,(-1)*(i)+arow, COLOR_BLUE);
+     
     }
   }
+  
+  for(i = size; i >= 0; i--) {
+    for(j = acol+i; j >= acol-i; j--) {
+      //drawPixel(j,(-1)*(i)+arow,color);
+    }
+  }
+  
 }
