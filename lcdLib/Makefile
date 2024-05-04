@@ -16,7 +16,7 @@ lcdutils.o: lcdutils.c lcdutils.h
 buzzer.c: buzzer.h
 redControl-c.o: led.h
 drawFilledTriangle-c.o: led.h
-drawTriangle-c.o: led.h
+drawThing.o: led.h
 wdInterruptHandler.o: led.h
 blink.o: led.h
 
@@ -28,7 +28,7 @@ install: libLcd.a
 clean:
 	rm -f libLcd.a *.o *.elf *.c# *.c~ *~ *#
 
-lcddemo-c.elf: lcddemo.o buzzer.o redControl-c.o drawFilledTriangle-c.o drawTriangle-c.o  blink.o libLcd.a  
+lcddemo-c.elf: lcddemo.o buzzer.o redControl-c.o drawFilledTriangle-c.o drawThing-c.o  blink.o libLcd.a  
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
 
 lcddemo-s.elf: lcddemo.o buzzer.o redControl-s.o drawFilledTriangle-s.o drawTriangle-s.s blink.o libLcd.a

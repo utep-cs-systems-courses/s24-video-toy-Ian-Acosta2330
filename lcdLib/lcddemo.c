@@ -77,7 +77,7 @@ int main(void) {
   lcd_init(); //Initializes the whole lcd
   buzzer_init();
 
-  clearScreen(COLOR_WHITE);
+  //clearScreen(COLOR_WHITE);
   //drawBox(width, height, 15, COLOR_RED);
 
   
@@ -116,20 +116,6 @@ int main(void) {
    }
    }*/
 
-
-/*
-void drawBox(u_char acol, u_char arow, u_char size, u_int color) {
-  u_char max_col = acol + size;
-  u_char max_row = arow + size;
-  
-  for (u_char col = acol - size; col < max_col; col++) {
-    for(u_char row = arow - size; row < max_row; row++) {
-      drawPixel(col, row, color);
-    }
-  }
-  }*/
-
-
 void switch_interrupt_handler_P1() {
   char p1val = P1IN;
   
@@ -146,9 +132,10 @@ void switch_interrupt_handler_P1() {
     P1OUT |= LED;
     red_on = 1;
     green_on = 1;
-    clearScreen(COLOR_BLACK);
-    drawTriangle(width, height, 15, COLOR_RED);
-    
+    clearScreen(COLOR_PINK);
+    drawThing();
+    //    drawString5x7(50,30, "(o_0)", COLOR_WHITE, COLOR_BLACK);
+
     //redControl(0);
     //P1OUT |= LED_GREEN;
     //buzzer_set_period(800);
@@ -197,8 +184,9 @@ void switch_interrupt_handler_P2_3() {
     //buzzer_set_period(3300);
    char size = 60;
    green_on = 1;
-    clearScreen(COLOR_RED);
-    drawFilledTriangle(width, height, COLOR_BLACK,size);
+   clearScreen(COLOR_PINK);
+   drawFilledTriangle(width, height, COLOR_BLACK,size);
+   drawString5x7(50,30, "(o_0)", COLOR_WHITE, COLOR_BLACK);
 
   }
 }
@@ -210,6 +198,7 @@ void switch_interrupt_handler_P2_4() {
   if (p2val & SW4) {
 
   }else {
+    clearScreen(COLOR_WHITE);
     P1OUT &= ~LED;
   }
 }
