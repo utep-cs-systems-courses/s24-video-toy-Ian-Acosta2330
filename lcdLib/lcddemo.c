@@ -132,7 +132,7 @@ void switch_interrupt_handler_P1() {
     P1OUT |= LED;
     red_on = 1;
     green_on = 1;
-    clearScreen(COLOR_PINK);
+    clearScreen(COLOR_GREEN-5);
     drawThing();
     //    drawString5x7(50,30, "(o_0)", COLOR_WHITE, COLOR_BLACK);
 
@@ -164,6 +164,7 @@ void switch_interrupt_handler_P2_2() {
     if(red_on) {
       red_on = blink();
     }
+   
     //red_on = redControl(red_on);
     //buzzer_set_period(800);
     //redControl(1);
@@ -199,6 +200,7 @@ void switch_interrupt_handler_P2_4() {
 
   }else {
     clearScreen(COLOR_WHITE);
+    drawTriangle(width, height, 15, COLOR_RED);
     P1OUT &= ~LED;
   }
 }
@@ -210,11 +212,30 @@ void switch_interrupt_handler_P2_5() {
   if(p2val & SW5) {
     buzzer_set_period(0);
   } else {
-    buzzer_set_period(4940);
-    __delay_cycles(10000000);
-    buzzer_set_period(4440);
-    __delay_cycles(10000000);
+     buzzer_set_period(6590);
+    __delay_cycles(5000000);
+    buzzer_set_period(4400);
+    __delay_cycles(12500000);
+    buzzer_set_period(6590);
+    __delay_cycles(5000000);
+    buzzer_set_period(4400);
+    __delay_cycles(12500000); //a
+    buzzer_set_period(6590);
+    __delay_cycles(5000000);
+    buzzer_set_period(4400);
+    __delay_cycles(5000000);
+    buzzer_set_period(4940); //b
+    __delay_cycles(5000000);
+    buzzer_set_period(5540);//c#
+    __delay_cycles(5000000);
+    buzzer_set_period(6590);
+    __delay_cycles(5000000);
+    buzzer_set_period(8800);
+    //__delay_cycles(5000000);
+    //buzzer_set_period(4400);
+    __delay_cycles(12500000);
     buzzer_set_period(0);
+    
     /* buzzer_set_period(4940);
     __delay_cycles(2500000);
     buzzer_set_period(5240);

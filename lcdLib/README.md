@@ -55,3 +55,25 @@ $ make install
 ## See Also
 
 lcdLib requires timerLib (in directory ../timerLib).  Be sure to "make install" it first!
+
+### Port 1
+
+Generated Cat picture and turns LED ON
+
+### S1
+
+Makes LED Dimmer if load-c, Makes LED Brighter if load-s
+
+### S2
+
+Generates a square composed of different colored triangles
+
+### S3
+
+Generate a very simple and sad triangle but hopefully satisfies requriement
+for C and poorly written assembly
+
+## S4
+
+Generates a song, was supposed to be Mitchirineko March, but notes on buzzer
+were weird. 
